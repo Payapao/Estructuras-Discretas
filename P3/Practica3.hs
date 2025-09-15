@@ -21,7 +21,7 @@ Descripción: Recibe una lista y regresa los primos de esa lista
 Uso: primos [1..20]  = [2 , 3 , 5 , 7 , 11 , 13 , 17 , 19]
 -}
 
-primos list = [x | x <- list, x `mod` 2 == 0]
+primos list = [x | x <- list, x > 1, length [a | a <- [2..x-1], x `mod` a == 0] == 0]
 
 
 {- Función: conjuntoLista
@@ -29,8 +29,8 @@ Descripción: Recibe una lista y regresa una lista sin elementos repetidos
 Uso: conjuntoLista [1 , 2 , 2 , 1 , 3] = [1 ,2 ,3]
  -}
 
-
 conjuntoLista [] = []
 conjuntoLista (x:xs) = x : conjuntoLista [a | a <- xs, a /= x ]
 
 
+                       
