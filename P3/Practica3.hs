@@ -3,11 +3,13 @@ Descripción: Recibe un entero y regresa la materia con los respectivos creditos
 Uso: creditos 12 = Introducción a las CC
 -}
 
-creditos :: Int  -> [String]
-creditos 12 = ["Introcuccion a las CC, Matematicas para las CA"]
-creditos 10 = ["Estructuras Discretas, Algebra Superior"]
-creditos 4 = ["Ingles"]
-creditos _ = ["No hay ninguna materia con esa cantidad de creditos"]
+data Semestre1 = ICC String | MCA String | ED String | AS String | In String | Ot String deriving (Show, Eq)
+
+creditos :: Int -> [Semestre1]
+creditos 12 = [ICC "Introcuccion a las CC", MCA "Matematicas para las CA"]
+creditos 10 = [ED "Estructuras Discretas", AS "Algebra Superior"]
+creditos 4 = [In "Ingles"]
+creditos _ = [Ot "No hay ninguna materia con esa cantidad de creditos"]
 
 {- Función: negativos
 Descripción: Recibe una lista y regresa la cantidad de negativos de la lista
