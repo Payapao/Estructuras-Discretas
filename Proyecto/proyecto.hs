@@ -22,7 +22,7 @@ arbolH (x:xs) = creaArbol (frecuencia (x:xs))
 
 {-Funcion: comprimir
 Descripcion: recibe una cadena y regresa la cadena comprimida junto con su resectivo arbol.
-Uso : frecuencia "Hola" = [('H',1),('o',1),('l',1),('a',1)]
+Uso :"hola" = ("0001001011",Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'h')) (Hoja 'o')) (Hoja 'l')) (Hoja 'a'))
 -}
 
 comprimir :: String -> (String, ArbolH)
@@ -31,18 +31,11 @@ comprimir (x:xs) = (comprimeAux (x:xs) (arbolH (x:xs)), arbolH (x:xs))
 
 {-Funcion: decodificacion
 Descripcion: recibe una cadena comprimida y su respectivo arbol y regresa la cadena decodificada.
-Uso : frecuencia "Hola" = [('H',1),('o',1),('l',1),('a',1)]
+Uso : descomprime "0001001011" (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'h')) (Hoja 'o')) (Hoja 'l')) (Hoja 'a')) = "hola"
 -}
 
---decodificacion :: String -> ArbolH -> String
---decodificacion (x:xs) Vacio = error "Es necesario un arbol para realizar la decodificación"
---decodificacion [] (Nodo t1 t2) = error "No se puede decodificar una cadena vacia"
---decodificacion (x:xs) (Nodo t1 t2)
-
-
-
-
-
-
- 
+descomprime :: String -> ArbolH -> String
+descomprime (x:xs) Vacio = error "Es necesario un arbol para realizar la decodificación"
+descomprime [] (Nodo t1 t2) = error "No se puede decodificar una cadena vacia"
+descomprime (x:xs) (Nodo t1 t2) = descomprimeAux (separa (x:xs) [] []) (Nodo t1 t2) 
 
