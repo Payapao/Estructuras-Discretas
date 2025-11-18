@@ -12,7 +12,7 @@ frecuencia (x:xs) = quicksort (frecuenciaAux (x:xs))
 
 {-Funcion: arbolH
 Descripcion: recibe una cadena y regresa el arbol de Huffman asociado
-Uso : frecuencia "Hola" = [('H',1),('o',1),('l',1),('a',1)]
+Uso : arbolH "Hola cara de bola" = Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'H')) (Hoja 'c')) (Hoja 'r')) (Hoja 'd')) (Hoja 'e')) (Hoja 'b')) (Hoja 'o')) (Hoja 'l')) (Hoja ' ')) (Hoja 'a')
 -}
 
 arbolH :: String -> ArbolH
@@ -22,12 +22,12 @@ arbolH (x:xs) = creaArbol (frecuencia (x:xs))
 
 {-Funcion: comprimir
 Descripcion: recibe una cadena y regresa la cadena comprimida junto con su resectivo arbol.
-Uso :"hola" = ("0001001011",Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'h')) (Hoja 'o')) (Hoja 'l')) (Hoja 'a'))
+Uso : comprime "hola" = ("0001001011",Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'h')) (Hoja 'o')) (Hoja 'l')) (Hoja 'a'))
 -}
 
-comprimir :: String -> (String, ArbolH)
-comprimir "" = ("", Vacio)
-comprimir (x:xs) = (comprimeAux (x:xs) (arbolH (x:xs)), arbolH (x:xs))
+comprime :: String -> (String, ArbolH)
+comprime "" = ("", Vacio)
+comprime (x:xs) = (comprimeAux (x:xs) (arbolH (x:xs)), arbolH (x:xs))
 
 {-Funcion: decodificacion
 Descripcion: recibe una cadena comprimida y su respectivo arbol y regresa la cadena decodificada.

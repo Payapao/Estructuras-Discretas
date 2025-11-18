@@ -7,7 +7,7 @@ data ArbolH = Vacio | Hoja Char | Nodo ArbolH ArbolH deriving (Show)
 
 {-Funcion: frecuenciaAux
 Descripcion: recibe una cadena y regresa una lista de tuplas indicando su frecuencia.
-Uso : frecuencia "Hola" = [('H',1),('o',1),('l',1),('a',1)]
+Uso : frecuenciaAux "Hola" = [('H',1),('o',1),('l',1),('a',1)]
 -}
 
 frecuenciaAux :: String -> [(Char, Int)]
@@ -21,7 +21,9 @@ Uso : frecuencial l "Haskell" = 2
 
 frecuencial :: Char -> String -> Int
 frecuencial c "" = 0
-frecuencial c (x:xs) = if c == x then 1 + frecuencial c xs else frecuencial c xs
+frecuencial c (x:xs) = if c == x
+                       then 1 + frecuencial c xs
+                       else frecuencial c xs
 
 {-Funcion: quiksort
 Descripcion: Oredena una lista de tuplas
@@ -50,8 +52,10 @@ Uso: comprimeAux "Hola Vania" (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo (Nodo Va
 -}
 
 comprimeAux :: String -> ArbolH -> String
-comprimeAux [x] (Nodo t1 t2) = if x == elemento t2 then "1" else "0"++ comprimeAux [x] t1
-comprimeAux (x:xs) (Nodo t1 t2) =(comprimeAux [x] (Nodo t1 t2)) ++ (comprimeAux xs (Nodo t1 t2))
+comprimeAux [x] (Nodo t1 t2) = if x == elemento t2
+                               then "1"
+                               else "0"++ comprimeAux [x] t1
+comprimeAux (x:xs) (Nodo t1 t2) = (comprimeAux [x] (Nodo t1 t2)) ++ (comprimeAux xs (Nodo t1 t2))
 
 {-Función: elemento 
 Descomprime: Recibe una hoja y regresa su elemento
@@ -69,7 +73,9 @@ Uso: descomprimel "01" (Nodo (Nodo (Nodo (Nodo Vacio (Hoja 'h')) (Hoja 'o')) (Ho
 
 descomprimel :: String -> ArbolH -> String
 descomprimel [] (Nodo t1 t2) = [] 
-descomprimel (x:xs) (Nodo t1 t2) = if x == '1' then [elemento t2] else descomprimel xs t1
+descomprimel (x:xs) (Nodo t1 t2) = if x == '1'
+                                   then [elemento t2]
+                                   else descomprimel xs t1
 
 {-Función: descomprimeAux
 Descripción: Recibe una lista de cadenas y un Arbol y regresa la palabra decodificada
